@@ -2,21 +2,23 @@
 
 Gestor de tickets **gratuito y de código abierto, con licencia MIT**. Implementación independiente en SwiftUI. No está afiliada a Ticketeca y no reutiliza su código, marca ni recursos.
 
-**Estado real:** adaptación a **xtool 1.23.0** realizada. El manifiesto SwiftPM se ha validado y el núcleo se ha compilado realmente con Swift 6.4.1 para Linux: 8 grupos de pruebas correctos. La compilación iOS está bloqueada porque falta el SDK oficial de Apple; el intento de descargar Xcode solicita autenticación. No hay IPA ni publicación pública todavía. Las pruebas XCTest de iOS y el uso en iPhone siguen pendientes.
+**Estado real (24/10/2026):** código publicado y primera IPA generada con **xtool 1.23.0**, usando el SDK iOS 26.5 de Xcode 26.6 en GitHub Actions. Han pasado **14 pruebas XCTest nativas y 8 grupos de pruebas del núcleo**. El paquete se ha comprobado como archivo IPA válido con ejecutable arm64, versión, icono y manifiesto de privacidad. La instalación y el uso en un iPhone físico siguen pendientes.
 
-Lee primero [XTOOL.md](docs/XTOOL.md): incluye comandos verificados, resultados y requisitos que faltan. El workflow principal ahora compila y empaqueta con xtool sobre un runner macOS con SDK Apple. Para ejecutarlo y publicar la release desde este chat hace falta conectar GitHub.
+**[Descargar TicketLibre 1.0.1](https://github.com/jesuspt-dev/TicketLibre/releases/tag/v1.0.1)** · [Compilación y pruebas verificadas](https://github.com/jesuspt-dev/TicketLibre/actions/runs/40117314673).
+
+La IPA está **sin firmar**: necesita firma personal e instalación con AltStore Classic. No se instala directamente desde Safari. La app y el código son gratuitos; esta publicación es una descarga de GitHub, no una publicación en App Store/TestFlight.
 
 ## Empezar sin Mac
 
 1. Lee [INSTALAR_EN_IPHONE.md](docs/INSTALAR_EN_IPHONE.md).
-2. Crea un repositorio GitHub público vacío y sube el contenido de esta carpeta, incluyendo `.github`.
+2. Descarga la IPA desde la release. Para modificar y recompilar el proyecto, crea un fork de este repositorio.
 3. Ejecuta **Actions → Build iPhone IPA with xtool → Run workflow**, o deja que se ejecute tras el primer push a `main`.
 4. Si compila y pasan las pruebas, descarga el artifact y extrae `TicketLibre-v1.0.1-iPhone-unsigned.ipa`.
 5. Instálalo con AltStore Classic en tu iPhone y renuévalo antes de siete días si usas una cuenta gratuita de Apple.
 
 No introduzcas credenciales Apple en GitHub para esta ruta. AltStore realiza la firma personal. Publicar un archivo IPA sin firma no permite instalarlo directamente desde Safari.
 
-Para crear una descarga pública duradera del código y de la IPA sin firma, sigue la sección GitHub Releases de la guía. El workflow solo publica una release cuando se sube una etiqueta `v*` y las pruebas y la compilación pasan.
+Para crear una descarga pública duradera del código y de la IPA sin firma, sigue la sección GitHub Releases de la guía. El workflow publica la release tras pasar las pruebas y la compilación en `main` o en una etiqueta `v*`.
 
 ## Funciones implementadas en el código
 
@@ -62,13 +64,13 @@ bash scripts/build-xtool.sh
 
 `validate.py` solo valida estructura, iconos, plist y configuración; no compila la interfaz iOS. Las pruebas XCTest requieren macOS/Xcode; el build con xtool funciona en Linux con SDK Darwin instalado o en macOS con el SDK de Xcode. El workflow selecciona Xcode adecuado, comprueba la plataforma iOS, ejecuta XCTest y crea el paquete `Payload/TicketLibre.app`. No usa tuberías que corten la salida de `xcodebuild` con `head`.
 
-Hay 14 pruebas XCTest de dinero, fechas inválidas, lectura de totales, descuentos, conservación de céntimos, renombrado, archivos inválidos, copias, persistencia y duplicados. **Los XCTest de iOS están preparados, no ejecutados. Los 8 grupos portables sí se han compilado y ejecutado.** Consulta [VALIDACION.md](docs/VALIDACION.md).
+Hay 14 pruebas XCTest de dinero, fechas inválidas, lectura de totales, descuentos, conservación de céntimos, renombrado, archivos inválidos, copias, persistencia y duplicados. **Los 14 XCTest de iOS y los 8 grupos portables se han ejecutado correctamente en GitHub Actions.** Consulta [VALIDACION.md](docs/VALIDACION.md).
 
 ## Publicación y estudio de la app de referencia
 
 - [Investigación y decisiones](docs/INVESTIGACION.md): quejas verificadas, distinción frente al historial de correcciones y fuentes.
 - [Instalación gratuita desde Windows](docs/INSTALAR_EN_IPHONE.md).
-- [Publicación App Store/TestFlight](docs/PUBLICAR_APP_STORE.md): requisitos, firma y workflow opcional.
+- [Publicación App Store/TestFlight](docs/PUBLICAR_APP_STORE.md): requisitos, firma y plantilla opcional en `docs/testflight-workflow.yml`.
 - [Privacidad](docs/PRIVACIDAD.md).
 - [Licencia MIT](LICENSE) y [cambios](CHANGELOG.md).
 
