@@ -1,0 +1,24 @@
+{
+  "version": "1.0.1",
+  "build": 2,
+  "xtool_version": "1.23.0",
+  "swift_version": "6.4.1",
+  "host": "Ubuntu 24.04 x86_64",
+  "swift_package_dump": "passed",
+  "swift_source_syntax_files": 18,
+  "portable_core_compilation": "passed",
+  "portable_test_groups_passed": 8,
+  "remainder_distribution_cases": 14007,
+  "native_xctest_methods": 14,
+  "native_xctest_executed": false,
+  "ios_build_completed": false,
+  "ios_sdk_status": "not installed",
+  "build_script_exit_code": 66,
+  "ipa_created": false,
+  "published": false,
+  "blockers": [
+    "Official Apple Darwin/iOS SDK missing; official Xcode download requires Apple authentication",
+    "No authenticated GitHub connection for remote build/release",
+    "No Apple distribution account/signing assets connected for TestFlight/App Store"
+  ]
+}

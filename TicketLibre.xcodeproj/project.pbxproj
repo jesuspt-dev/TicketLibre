@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	"archiveVersion" = 1;
+	"classes" = {
+
+	};
+	"objectVersion" = 56;
+	"objects" = {
+		"BB05C6D11C373A3414ABC463" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Core/Models.swift";
+			"sourceTree" = "<group>";
+		};
+		"8DAEA6A3A34B7B9C8E55EB45" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "BB05C6D11C373A3414ABC463";
+		};
+		"52DB8782EF18FCEC9DFB634D" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Core/Money.swift";
+			"sourceTree" = "<group>";
+		};
+		"C0F571DB2ED1BA99F058CB37" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "52DB8782EF18FCEC9DFB634D";
+		};
+		"62AB6A49151FA43283459D8D" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Core/ReceiptParser.swift";
+			"sourceTree" = "<group>";
+		};
+		"EEA89FFCAB11C52DDE123151" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "62AB6A49151FA43283459D8D";
+		};
+		"54CC794A888CC6CF187166E4" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/DeviceGate.swift";
+			"sourceTree" = "<group>";
+		};
+		"A9EA11B0AACD66D0670B57D8" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "54CC794A888CC6CF187166E4";
+		};
+		"D000FBF87A85E63F40C3DAB6" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/ExportService.swift";
+			"sourceTree" = "<group>";
+		};
+		"15A880A4DE46A14990683D51" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D000FBF87A85E63F40C3DAB6";
+		};
+		"4B7D318CB3225B10FA99FD5D" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/OCRService.swift";
+			"sourceTree" = "<group>";
+		};
+		"3B8C3860294AD8FABE177FBB" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "4B7D318CB3225B10FA99FD5D";
+		};
+		"1DC11F167E3FC517A2FE5D93" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/ReceiptStore.swift";
+			"sourceTree" = "<group>";
+		};
+		"6135BA5A84234441884B6829" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "1DC11F167E3FC517A2FE5D93";
+		};
+		"5924F9FD05AE777F8F7D29B2" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/Shortcuts.swift";
+			"sourceTree" = "<group>";
+		};
+		"EE7680EAC913E33387CB81D2" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5924F9FD05AE777F8F7D29B2";
+		};
+		"EADE0931813748E9C3FABF46" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Services/TransferService.swift";
+			"sourceTree" = "<group>";
+		};
+		"2BD03C0ABFD6F903BC55487F" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "EADE0931813748E9C3FABF46";
+		};
+		"1720DA96E6A6E58570955BA4" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "TicketLibreApp.swift";
+			"sourceTree" = "<group>";
+		};
+		"F9D6BE79A90915EA2C5BC262" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "1720DA96E6A6E58570955BA4";
+		};
+		"2C268A6C141342622CE9FC47" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/ReceiptEditor.swift";
+			"sourceTree" = "<group>";
+		};
+		"746CE835AA0729E82F5B52D9" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "2C268A6C141342622CE9FC47";
+		};
+		"925D5E4FF4539B1BEB7551CC" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/ReceiptsView.swift";
+			"sourceTree" = "<group>";
+		};
+		"1BE20D393187FD4F11A59D20" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "925D5E4FF4539B1BEB7551CC";
+		};
+		"D5EBCC5A50047CD3666D2CB0" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/ReportsView.swift";
+			"sourceTree" = "<group>";
+		};
+		"FBD3D3376F33E13492D7C1E0" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D5EBCC5A50047CD3666D2CB0";
+		};
+		"A62EE6DAF73DC42498834129" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/ScanView.swift";
+			"sourceTree" = "<group>";
+		};
+		"A656EAFD70804815279BF1CB" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "A62EE6DAF73DC42498834129";
+		};
+		"F0C1D1E18628DE4D1868A664" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/SettingsView.swift";
+			"sourceTree" = "<group>";
+		};
+		"5A048A5962D239BE0A1D024E" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "F0C1D1E18628DE4D1868A664";
+		};
+		"F8880B7DCEC1C9A55A12C810" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Views/ShoppingView.swift";
+			"sourceTree" = "<group>";
+		};
+		"AD5A26F8ED2CF52067FDBF02" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "F8880B7DCEC1C9A55A12C810";
+		};
+		"28AAD1477D5182D66D4B03B3" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder.assetcatalog";
+			"path" = "Assets.xcassets";
+			"sourceTree" = "<group>";
+		};
+		"8D4362F770337886E1D4A7E4" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "28AAD1477D5182D66D4B03B3";
+		};
+		"26B2A637F7DC4079D5AB78A5" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.xml";
+			"path" = "PrivacyInfo.xcprivacy";
+			"sourceTree" = "<group>";
+		};
+		"BE157D6509A0DBCF40F63721" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "26B2A637F7DC4079D5AB78A5";
+		};
+		"7B594B6DB375E1BF3F23CDD6" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.plist.xml";
+			"path" = "Info.plist";
+			"sourceTree" = "<group>";
+		};
+		"3A2A88DEEFF3D1D23E496597" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"BB05C6D11C373A3414ABC463",
+				"52DB8782EF18FCEC9DFB634D",
+				"62AB6A49151FA43283459D8D",
+				"54CC794A888CC6CF187166E4",
+				"D000FBF87A85E63F40C3DAB6",
+				"4B7D318CB3225B10FA99FD5D",
+				"1DC11F167E3FC517A2FE5D93",
+				"5924F9FD05AE777F8F7D29B2",
+				"EADE0931813748E9C3FABF46",
+				"1720DA96E6A6E58570955BA4",
+				"2C268A6C141342622CE9FC47",
+				"925D5E4FF4539B1BEB7551CC",
+				"D5EBCC5A50047CD3666D2CB0",
+				"A62EE6DAF73DC42498834129",
+				"F0C1D1E18628DE4D1868A664",
+				"F8880B7DCEC1C9A55A12C810",
+				"28AAD1477D5182D66D4B03B3",
+				"26B2A637F7DC4079D5AB78A5",
+				"7B594B6DB375E1BF3F23CDD6",
+			);
+			"path" = "TicketLibre";
+			"sourceTree" = "<group>";
+		};
+		"E05FCB614AB36FDEE72EE1F2" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "TicketLibreTests.swift";
+			"sourceTree" = "<group>";
+		};
+		"80FAC02A0BD5812E2A00F339" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "E05FCB614AB36FDEE72EE1F2";
+		};
+		"8B7A6DECC0651D269EA794C7" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"E05FCB614AB36FDEE72EE1F2",
+			);
+			"path" = "TicketLibreTests";
+			"sourceTree" = "<group>";
+		};
+		"E6FC57C251E9E1BEC1D3C0D2" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.application";
+			"includeInIndex" = 0;
+			"path" = "TicketLibre.app";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"B7480EC88B7F22D0A4757273" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"includeInIndex" = 0;
+			"path" = "TicketLibreTests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"FBDC4F23F93125BBEEAE800C" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"E6FC57C251E9E1BEC1D3C0D2",
+				"B7480EC88B7F22D0A4757273",
+			);
+			"name" = "Products";
+			"sourceTree" = "<group>";
+		};
+		"B28B7AF69320201D1CF206EB" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"3A2A88DEEFF3D1D23E496597",
+				"8B7A6DECC0651D269EA794C7",
+				"FBDC4F23F93125BBEEAE800C",
+			);
+			"sourceTree" = "<group>";
+		};
+		"2D764CD838DB39F040AA7EC4" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = 2147483647;
+			"files" = (
+				"8DAEA6A3A34B7B9C8E55EB45",
+				"C0F571DB2ED1BA99F058CB37",
+				"EEA89FFCAB11C52DDE123151",
+				"A9EA11B0AACD66D0670B57D8",
+				"15A880A4DE46A14990683D51",
+				"3B8C3860294AD8FABE177FBB",
+				"6135BA5A84234441884B6829",
+				"EE7680EAC913E33387CB81D2",
+				"2BD03C0ABFD6F903BC55487F",
+				"F9D6BE79A90915EA2C5BC262",
+				"746CE835AA0729E82F5B52D9",
+				"1BE20D393187FD4F11A59D20",
+				"FBD3D3376F33E13492D7C1E0",
+				"A656EAFD70804815279BF1CB",
+				"5A048A5962D239BE0A1D024E",
+				"AD5A26F8ED2CF52067FDBF02",
+			);
+			"runOnlyForDeploymentPostprocessing" = 0;
+		};
+		"06F5DC629BD46AAFD46564D1" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = 2147483647;
+			"files" = (
+				"8D4362F770337886E1D4A7E4",
+				"BE157D6509A0DBCF40F63721",
+			);
+			"runOnlyForDeploymentPostprocessing" = 0;
+		};
+		"12384B5908BE5FE5B3301CEE" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = 2147483647;
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = 0;
+		};
+		"9F3002A5D69B22D357A58AA9" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = 2147483647;
+			"files" = (
+				"80FAC02A0BD5812E2A00F339",
+			);
+			"runOnlyForDeploymentPostprocessing" = 0;
+		};
+		"99C7943D90D870A50ADE9160" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = 2147483647;
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = 0;
+		};
+		"89E1FD6268CC0F221A2BE178" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "18.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_STRICT_CONCURRENCY" = "minimal";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"GCC_NO_COMMON_BLOCKS" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"ENABLE_TESTABILITY" = "YES";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+			};
+			"name" = "Debug";
+		};
+		"E6DE6C99132752C914FEF632" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "18.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_STRICT_CONCURRENCY" = "minimal";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"GCC_NO_COMMON_BLOCKS" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+				"SWIFT_COMPILATION_MODE" = "wholemodule";
+			};
+			"name" = "Release";
+		};
+		"BC7E287B75C6D3E574547D08" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"89E1FD6268CC0F221A2BE178",
+				"E6DE6C99132752C914FEF632",
+			);
+			"defaultConfigurationIsVisible" = 0;
+			"defaultConfigurationName" = "Release";
+		};
+		"E9B2E96ABC5F6856F2BE79CF" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "org.ticketlibre.ios";
+				"MARKETING_VERSION" = "1.0.1";
+				"CURRENT_PROJECT_VERSION" = "2";
+				"INFOPLIST_FILE" = "TicketLibre/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DEVELOPMENT_TEAM" = "";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"SUPPORTS_MACCATALYST" = "NO";
+				"LD_RUNPATH_SEARCH_PATHS" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"ENABLE_TESTABILITY" = "YES";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+			};
+			"name" = "Debug";
+		};
+		"5A8C91857F674E16E2724F47" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "org.ticketlibre.ios";
+				"MARKETING_VERSION" = "1.0.1";
+				"CURRENT_PROJECT_VERSION" = "2";
+				"INFOPLIST_FILE" = "TicketLibre/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DEVELOPMENT_TEAM" = "";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"SUPPORTS_MACCATALYST" = "NO";
+				"LD_RUNPATH_SEARCH_PATHS" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+				"SWIFT_COMPILATION_MODE" = "wholemodule";
+			};
+			"name" = "Release";
+		};
+		"60EA43DB068BD71C9709BED5" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"E9B2E96ABC5F6856F2BE79CF",
+				"5A8C91857F674E16E2724F47",
+			);
+			"defaultConfigurationIsVisible" = 0;
+			"defaultConfigurationName" = "Release";
+		};
+		"FCB48D8F88BCDB0ED9FADFD7" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "org.ticketlibre.ios.tests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/TicketLibre.app/TicketLibre";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"LD_RUNPATH_SEARCH_PATHS" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"ENABLE_TESTABILITY" = "YES";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+			};
+			"name" = "Debug";
+		};
+		"942EEBBACD6C88CAE7F29B29" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "org.ticketlibre.ios.tests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/TicketLibre.app/TicketLibre";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"LD_RUNPATH_SEARCH_PATHS" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+				"SWIFT_COMPILATION_MODE" = "wholemodule";
+			};
+			"name" = "Release";
+		};
+		"87F2532CB576F7CE6EB48F72" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"FCB48D8F88BCDB0ED9FADFD7",
+				"942EEBBACD6C88CAE7F29B29",
+			);
+			"defaultConfigurationIsVisible" = 0;
+			"defaultConfigurationName" = "Release";
+		};
+		"D799BAE6088A90139B415FCC" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"proxyType" = 1;
+			"remoteGlobalIDString" = "7D1043473D55BFA90E8530D3";
+			"remoteInfo" = "TicketLibre";
+		};
+		"E9FAD0C6CD43534327C0AF90" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "7D1043473D55BFA90E8530D3";
+			"targetProxy" = "D799BAE6088A90139B415FCC";
+		};
+		"7D1043473D55BFA90E8530D3" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "60EA43DB068BD71C9709BED5";
+			"buildPhases" = (
+				"2D764CD838DB39F040AA7EC4",
+				"12384B5908BE5FE5B3301CEE",
+				"06F5DC629BD46AAFD46564D1",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+			);
+			"name" = "TicketLibre";
+			"productName" = "TicketLibre";
+			"productReference" = "E6FC57C251E9E1BEC1D3C0D2";
+			"productType" = "com.apple.product-type.application";
+		};
+		"A94A8FE5CCB19BA61C4C0873" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "87F2532CB576F7CE6EB48F72";
+			"buildPhases" = (
+				"9F3002A5D69B22D357A58AA9",
+				"99C7943D90D870A50ADE9160",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+				"E9FAD0C6CD43534327C0AF90",
+			);
+			"name" = "TicketLibreTests";
+			"productName" = "TicketLibreTests";
+			"productReference" = "B7480EC88B7F22D0A4757273";
+			"productType" = "com.apple.product-type.bundle.unit-test";
+		};
+		"98F54143AB4E86B28C3AFEE0" = {
+			"isa" = "PBXProject";
+			"attributes" = {
+				"BuildIndependentTargetsInParallel" = "YES";
+				"LastUpgradeCheck" = "2600";
+				"TargetAttributes" = {
+					"7D1043473D55BFA90E8530D3" = {
+						"CreatedOnToolsVersion" = "26.0";
+					};
+					"A94A8FE5CCB19BA61C4C0873" = {
+						"CreatedOnToolsVersion" = "26.0";
+						"TestTargetID" = "7D1043473D55BFA90E8530D3";
+					};
+				};
+			};
+			"buildConfigurationList" = "BC7E287B75C6D3E574547D08";
+			"compatibilityVersion" = "Xcode 14.0";
+			"developmentRegion" = "es";
+			"hasScannedForEncodings" = 0;
+			"knownRegions" = (
+				"es",
+				"en",
+				"Base",
+			);
+			"mainGroup" = "B28B7AF69320201D1CF206EB";
+			"productRefGroup" = "FBDC4F23F93125BBEEAE800C";
+			"projectDirPath" = "";
+			"projectRoot" = "";
+			"targets" = (
+				"7D1043473D55BFA90E8530D3",
+				"A94A8FE5CCB19BA61C4C0873",
+			);
+		};
+	};
+	"rootObject" = "98F54143AB4E86B28C3AFEE0";
+}

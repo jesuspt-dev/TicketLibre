@@ -1,0 +1,10 @@
+version: 1
+bundleID: org.ticketlibre.ios
+product: TicketLibre
+infoPath: xtool-resources/Info.plist
+iconPath: xtool-resources/AppIcon.png
+skipLSP: true
+resources:
+  - TicketLibre/PrivacyInfo.xcprivacy
+  - xtool-resources/AppIcon60x60@2x.png
+  - xtool-resources/AppIcon60x60@3x.png
