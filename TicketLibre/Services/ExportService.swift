@@ -45,7 +45,7 @@ enum ExportService {
             }
             func line(_ value: String, bold: Bool = false) {
                 let attributes: [NSAttributedString.Key: Any] = [.font: bold ? UIFont.boldSystemFont(ofSize: 11) : UIFont.systemFont(ofSize: 11), .foregroundColor: UIColor.black]
-                let bounds = (value as NSString).boundingRect(with: CGSize(width: 523, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil)
+                let bounds = (value as NSString).boundingRect(with: CGSize(width: 523, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil)
                 if y + bounds.height + 12 > 795 { page() }
                 (value as NSString).draw(in: CGRect(x: 36, y: y, width: 523, height: bounds.height + 2), withAttributes: attributes)
                 y += bounds.height + 9
