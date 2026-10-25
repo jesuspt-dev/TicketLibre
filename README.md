@@ -2,7 +2,7 @@
 
 Gestor de tickets **gratuito y de código abierto, con licencia MIT**. Implementación independiente en SwiftUI. No está afiliada a Ticketeca y no reutiliza su código, marca ni recursos.
 
-**Corrección de IVA (1.0.2/build 3):** interpreta el cuadro fiscal de varias bases y suma las cuotas al total cuando los precios son netos. Regresión: 18,11 € + 3,56 € de IVA = **21,67 €**. Conserva el total impreso y evita duplicar IVA incluido. La versión 1.0.1 se instaló con xtool y su apertura fue confirmada en un iPhone; la nueva versión debe pasar las pruebas y compilación de GitHub Actions antes de publicarse.
+**Corrección de IVA (1.0.2/build 3):** interpreta el cuadro fiscal de varias bases y suma las cuotas al total cuando los precios son netos. Regresión: 18,11 € + 3,56 € de IVA = **21,67 €**. Conserva el total impreso y evita duplicar IVA incluido. La versión 1.0.1 se instaló con xtool y su apertura fue confirmada en un iPhone; la corrección 1.0.2 ha pasado las pruebas y la compilación del IPA en [GitHub Actions](https://github.com/jesuspt-dev/TicketLibre/actions/runs/40229722902). La prueba física de OCR y de la nueva pantalla sigue pendiente.
 
 **[Descargas publicadas](https://github.com/jesuspt-dev/TicketLibre/releases)** · [Compilación y pruebas](https://github.com/jesuspt-dev/TicketLibre/actions). La release 1.0.1 y su checksum se conservan sin sustituir sus archivos.
 
@@ -66,7 +66,7 @@ bash scripts/build-xtool.sh
 
 `validate.py` solo valida estructura, iconos, plist y configuración; no compila la interfaz iOS. Las pruebas XCTest requieren macOS/Xcode; el build con xtool funciona en Linux con SDK Darwin instalado o en macOS con el SDK de Xcode. El workflow selecciona Xcode adecuado, comprueba la plataforma iOS, ejecuta XCTest y crea el paquete `Payload/TicketLibre.app`. No usa tuberías que corten la salida de `xcodebuild` con `head`.
 
-En 1.0.1 pasaron 14 XCTest de iOS y 8 grupos portables en GitHub Actions; ese resultado histórico está en [VALIDACION.md](docs/VALIDACION.md). La corrección 1.0.2 amplía la cobertura a 17 XCTest y 22 grupos portables, incluidos los casos de [IVA](docs/IVA.md). Su ejecución y la compilación del nuevo IPA están pendientes; la validación estructural local no sustituye estas pruebas.
+En 1.0.1 pasaron 14 XCTest de iOS y 8 grupos portables en GitHub Actions; ese resultado histórico está en [VALIDACION.md](docs/VALIDACION.md). La corrección 1.0.2 ha pasado 17 XCTest y 22 grupos portables, incluidos los casos de [IVA](docs/IVA.md), además de la compilación del nuevo IPA con xtool. La cobertura automática no sustituye una prueba de OCR y uso en un iPhone.
 
 ## Publicación y estudio de la app de referencia
 

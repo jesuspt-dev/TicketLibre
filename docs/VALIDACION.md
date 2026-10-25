@@ -1,43 +1,33 @@
-# Estado de validación · TicketLibre 1.0.1
+# Estado de validación · TicketLibre 1.0.2 / build 3
 
-## Realizado en el entorno de creación
+La corrección de IVA se incorporó mediante [PR #1](https://github.com/jesuspt-dev/TicketLibre/pull/1). El workflow ejecuta pruebas del núcleo, XCTest nativo y compilación/empaquetado con xtool. La [release v1.0.2](https://github.com/jesuspt-dev/TicketLibre/releases/tag/v1.0.2) se publicó tras pasar también [el workflow de main](https://github.com/jesuspt-dev/TicketLibre/actions/runs/40230508597). Los resultados de cada versión se distinguen de las comprobaciones de uso en un iPhone.
 
-- Generación y lectura del proyecto PBX con un parser independiente, con targets TicketLibre y TicketLibreTests.
-- Verificación de que todos los archivos Swift de la app aparecen en el target y existe el esquema compartido con XCTest.
-- Parseo real con swiftc de los 18 archivos Swift y validación SwiftPM. Compilación y ejecución del núcleo en Linux con 8 grupos de pruebas correctos; esto no verifica la interfaz ni los frameworks de iOS.
-- Validación de los plist de aplicación/privacidad y coherencia de versión/build.
-- Comprobación de las nueve imágenes AppIcon, sus dimensiones, referencias y ausencia de canal alfa. Inspección visual del icono de 1024 px.
-- Comprobación estructural de workflows YAML y sintaxis Bash de scripts.
-- Verificación de integridad del ZIP final y exclusión de historial Git, credenciales y resultados de compilación.
+## Comprobaciones automáticas de 1.0.2
 
-## Preparado pero NO ejecutado aquí
+- Validación local Python: 16 archivos Swift de aplicación en el target, esquema XCTest, plist, privacidad, nueve iconos y coherencia de versión/build.
+- `git diff --check` correcto.
+- 22 grupos portables compilados y ejecutados correctamente en GitHub Actions, incluidos 14.007 repartos con restos positivos/negativos y las regresiones de [IVA](IVA.md).
+- 17 XCTest ejecutados correctamente, sin fallos, y compilación/empaquetado arm64 con xtool completos en [el workflow del PR](https://github.com/jesuspt-dev/TicketLibre/actions/runs/40229722902).
 
-- 14 métodos XCTest, incluidos miles de combinaciones de reparto con distintos restos positivos y negativos.
-- Compilación de todos los Swift con el compilador de Apple.
-- Build para iPhone físico, empaquetado IPA, firma de AltStore y arranque en un iPhone.
-- Workflow opcional de firma/subida a TestFlight y revisión de Apple.
-- Pruebas visuales de pantallas reales, cámara, permisos, PDFs, accesibilidad y bloqueo en un dispositivo.
+Los fixtures reproducen los importes del caso comunicado sin fotos, números de factura ni otros identificadores. Verifican 18,11 € de productos + 3,56 € de IVA = 21,67 €, conservación del total impreso, IVA incluido sin duplicarlo, importes ambiguos, tablas incompletas, copias antiguas y reparto.
 
-Este entorno dispone ahora de Swift 6.4.1 y xtool 1.23.0 en Linux; no dispone del SDK Darwin/iOS. La comprobación de estructura y el parseo de sintaxis **no demuestra que el proyecto compile ni sustituye un test de uso**. No se debe distribuir como una aplicación ya probada hasta completar la siguiente lista.
+IPA descargada y comprobada: SHA-256 `6666adbd0a61a42a0f042ab293ddd15a675d62cf93afd057ec8379eb49531732`, ZIP íntegro, ejecutable Mach-O arm64, bundle `org.ticketlibre.ios`, versión 1.0.2/build 3 y manifiesto de privacidad. La release 1.0.1 conserva su hash anterior.
 
-## Verificación nativa necesaria antes de la primera publicación
+## Prueba física y límites
 
-1. CI completa en verde, con XCTest y build iPhoneOS; descargar la IPA real y verificar su checksum.
-2. Instalar con AltStore, abrir, añadir ticket, cerrar y reabrir y comprobar datos.
-3. Escanear tickets de al menos tres tiendas; probar descuentos, IVA, productos por peso, ticket largo y fecha ilegible. Comparar el total con el papel.
-4. Importar foto girada y PDF con y sin capa de texto. Probar selección de páginas y un PDF protegido.
-5. Probar un descuadre y un duplicado y verificar que la decisión sigue siendo explícita.
-6. Separar Personal/Trabajo y EUR/USD/GBP; exportar y abrir PDF/CSV con la selección correcta.
-7. Dividir 10,01 € entre tres personas y asignar descuentos; verificar suma, renombrado de personas/productos y reapertura.
-8. Exportar copia, importar nuevos registros sin reemplazar los existentes y probar recuperación con datos de prueba.
-9. Mover a papelera, restaurar y eliminar definitivamente. Verificar el comportamiento a los 30 días con una build de pruebas y reloj controlado.
-10. Probar lista de compra y estimación, QR pequeño, rechazo de QR grande, JSON y ZIP abriéndolo con otra aplicación.
-11. Activar bloqueo; probar segundo plano con un editor, escáner y hoja de compartir abiertos; comprobar que se pide autenticación al volver. Probar cancelación, código y Siri desde app cerrada.
-12. Probar iPhone pequeño, tamaños de texto grandes, modo oscuro/claro, VoiceOver y contraste. No se han generado capturas de interfaz simulando que proceden de Xcode.
-13. Probar una colección grande y espacio insuficiente; exportar antes y confirmar que un error de escritura no sustituye la colección por datos vacíos.
+La versión 1.0.1/build 2 fue firmada e instalada con xtool desde Windows/WSL y una cuenta Apple gratuita el 24/10/2026. El usuario confirmó que abre y permite navegar tras confiar en el desarrollador. Este resultado no demuestra el funcionamiento físico de la nueva versión.
 
-## Alcance de las correcciones
+Pendiente para 1.0.2: actualizar encima de la app con la misma cuenta, abrir el ticket afectado, usar **IVA → Leer IVA y total del original**, revisar 3,56 € de IVA y total 21,67 €, guardar y comprobar reapertura. También hay que escanear otra vez la foto para verificar el reconocimiento real de Apple Vision: las pruebas del parser usan texto determinista.
 
-El código evita el cobro por escaneos y añade la separación Personal/Trabajo solicitada en las reseñas encontradas. Las medidas de robustez abordan clases de errores del historial público. Sin pruebas nativas ejecutadas, no se puede afirmar que todos esos errores estén corregidos ni que no existan otros.
+La cobertura automática no sustituye pruebas de cámara/permisos, PDFs reales, VoiceOver, tamaños de texto, Face ID, accesos Siri, colecciones grandes, poco almacenamiento o todas las combinaciones de exportación e importación. No se afirma que todas esas funciones se hayan probado en un dispositivo.
 
-El bloqueo exacto y los resultados de las pruebas portables están documentados en [XTOOL.md](XTOOL.md).
+## Reproducir
+
+```bash
+python3 scripts/validate.py
+bash scripts/test-core.sh
+bash scripts/test-ios.sh
+bash scripts/build-xtool.sh
+```
+
+Las pruebas iOS requieren macOS y herramientas de Apple; el workflow las ejecuta por separado del build con xtool. Para firmar una IPA ya publicada desde Windows basta el entorno xtool/USB, sin instalar Xcode o el SDK en el PC. Consulta [XTOOL.md](XTOOL.md) y [INSTALAR_EN_IPHONE.md](INSTALAR_EN_IPHONE.md).

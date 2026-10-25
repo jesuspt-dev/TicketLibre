@@ -1,27 +1,26 @@
 {
-  "version": "1.0.1",
-  "build": 2,
+  "version": "1.0.2",
+  "build": 3,
   "xtool_version": "1.23.0",
   "swift_version": "Xcode 26.6 toolchain",
-  "host": "GitHub Actions macos-26 arm64",
+  "host": "GitHub Actions macos-26",
   "swift_package_dump": "passed",
   "swift_source_syntax_files": 18,
   "portable_core_compilation": "passed",
-  "portable_test_groups_passed": 8,
+  "portable_test_groups_passed": 22,
   "remainder_distribution_cases": 14007,
-  "native_xctest_methods": 14,
+  "native_xctest_methods": 17,
   "native_xctest_executed": true,
   "ios_build_completed": true,
   "ios_sdk_status": "iOS 26.5 SDK installed on GitHub Actions runner",
   "build_script_exit_code": 0,
   "ipa_created": true,
   "published": true,
-  "blockers": [
-    "Apple signing assets/account and App Store review are still required for App Store/TestFlight; personal signing is available through AltStore."
-  ],
-  "native_xctest_passed": 14,
+  "blockers": [],
+  "native_xctest_passed": 17,
   "physical_iphone_tested": false,
   "publication": "GitHub Releases; unsigned IPA for personal signing",
-  "verified_workflow_run": "https://github.com/jesuspt-dev/TicketLibre/actions/runs/40117314673",
-  "ipa_sha256": "972456fd7daed03fbc48ff8d5f976d64bf03f1385c76569ea2dbf1f9cc9a6ce7"
+  "verified_workflow_run": "https://github.com/jesuspt-dev/TicketLibre/actions/runs/40230508597",
+  "ipa_sha256": "6666adbd0a61a42a0f042ab293ddd15a675d62cf93afd057ec8379eb49531732",
+  "personal_signing": "xtool with the device owner's Apple account; free signatures require renewal after seven days"
 }
