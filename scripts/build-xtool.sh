@@ -19,17 +19,17 @@ python3 scripts/prepare-xtool.py
 "$xtool_command" dev build --configuration release --ipa
 if [[ ! -f xtool/TicketLibre.ipa ]]; then echo 'xtool did not produce the expected IPA.'; exit 1; fi
 mkdir -p build
-cp xtool/TicketLibre.ipa build/TicketLibre-v1.0.1-iPhone-unsigned.ipa
+cp xtool/TicketLibre.ipa build/TicketLibre-v1.0.2-iPhone-unsigned.ipa
 python3 - <<'PY'
 from pathlib import Path
 import zipfile,plistlib,hashlib,struct
-ipa=Path('build/TicketLibre-v1.0.1-iPhone-unsigned.ipa')
+ipa=Path('build/TicketLibre-v1.0.2-iPhone-unsigned.ipa')
 with zipfile.ZipFile(ipa) as z:
  assert z.testzip() is None,'Corrupt IPA archive'
  base='Payload/TicketLibre.app/'
  info=plistlib.loads(z.read(base+'Info.plist'))
  assert info['CFBundleExecutable']=='TicketLibre'
- assert info['CFBundleShortVersionString']=='1.0.1' and info['CFBundleVersion']=='2'
+ assert info['CFBundleShortVersionString']=='1.0.2' and info['CFBundleVersion']=='3'
  assert info['CFBundleIdentifier']=='org.ticketlibre.ios'
  binary=z.read(base+'TicketLibre')
  assert binary[:4]==b'\xcf\xfa\xed\xfe','Expected 64-bit Mach-O executable'

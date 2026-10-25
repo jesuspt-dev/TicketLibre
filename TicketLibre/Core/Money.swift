@@ -47,7 +47,8 @@ enum Money {
             let ids = all.filter { assigned.contains($0) }
             for (id, amount) in distribute(item.cents, among: ids.isEmpty ? all : ids) { result[id, default: 0] += amount }
         }
-        for (id, amount) in distribute(receipt.difference, among: all) { result[id, default: 0] += amount }
+        // Receipt-level VAT and other adjustments are shared by all participants.
+        for (id, amount) in distribute(receipt.totalCents - receipt.itemSum, among: all) { result[id, default: 0] += amount }
         return result
     }
 }

@@ -2,6 +2,35 @@ import XCTest
 @testable import TicketLibre
 
 final class TicketLibreTests: XCTestCase {
+    private var vatReceipt: Receipt {
+        ReceiptParser.parse("TIENDA PRUEBA\nProducto 18,11\nImporte Base %IVA IVA Total\n18,11 15,91 21 3,34 21,67\n2,20 10 0,22").receipt
+    }
+    func testReportedVATTableAndRecalculation() {
+        let r = vatReceipt
+        XCTAssertEqual(r.itemSum, 1811)
+        XCTAssertEqual(r.vatCents, 356)
+        XCTAssertEqual(r.vatIncluded, false)
+        XCTAssertEqual(r.totalCents, 2167)
+        XCTAssertEqual(r.calculatedTotal, 2167)
+        XCTAssertEqual(r.difference, 0)
+        XCTAssertEqual(r.items.count, 1)
+    }
+    func testIncludedVATIsNotAddedAgain() {
+        let r = ReceiptParser.parse("TIENDA\nProducto 21,67\nBase %IVA Cuota Total\n15,91 21 3,34 21,67\n2,20 10 0,22").receipt
+        XCTAssertEqual(r.vatCents, 356)
+        XCTAssertEqual(r.vatIncluded, true)
+        XCTAssertEqual(r.calculatedTotal, 2167)
+        XCTAssertEqual(r.totalCents, 2167)
+    }
+    func testVATBackupAndSplitting() throws {
+        var r = vatReceipt
+        r.participants = [Participant(name: "A"), Participant(name: "B")]
+        XCTAssertEqual(Money.split(r).values.reduce(0, +), 2167)
+        let archive = try JSONDecoder().decode(Archive.self, from: JSONEncoder().encode(Archive(receipts: [r]))).validated()
+        XCTAssertEqual(archive.receipts[0], r)
+        r.vatCents = .min
+        XCTAssertThrowsError(try Archive(receipts: [r]).validated())
+    }
     func testSpanishAndInternationalMoney() {
         XCTAssertEqual(Money.parse("1.234,56 €"), 123456)
         XCTAssertEqual(Money.parse("$1,234.56"), 123456)

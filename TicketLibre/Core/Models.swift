@@ -30,6 +30,9 @@ struct Receipt: Identifiable, Codable, Hashable {
     var notes = ""
     var items: [ReceiptItem] = []
     var totalCents: Int64 = 0
+    // Optional so archives written before VAT support remain decodable.
+    var vatCents: Int64? = nil
+    var vatIncluded: Bool? = nil
     var rawText = ""
     var images: [Data] = []
     var participants: [Participant] = []
@@ -37,7 +40,9 @@ struct Receipt: Identifiable, Codable, Hashable {
     var deletedAt: Date?
     var createdAt = Date()
     var itemSum: Int64 { items.reduce(0) { $0 + $1.cents } }
-    var difference: Int64 { totalCents - itemSum }
+    var vatAddition: Int64 { vatIncluded == false ? (vatCents ?? 0) : 0 }
+    var calculatedTotal: Int64 { itemSum + vatAddition }
+    var difference: Int64 { totalCents - calculatedTotal }
 }
 
 struct ShoppingItem: Identifiable, Codable, Hashable {
@@ -67,6 +72,7 @@ struct Archive: Codable {
                   ["Personal", "Trabajo"].contains(r.scope),
                   r.store.count <= 500, r.rawText.count <= 200_000,
                   (-Money.limit...Money.limit).contains(r.totalCents), r.items.count <= 2_000,
+                  r.vatCents.map({ (-Money.limit...Money.limit).contains($0) }) ?? true,
                   Set(r.items.map(\.id)).count == r.items.count,
                   Set(r.participants.map(\.id)).count == r.participants.count,
                   r.participants.count <= 50, r.images.count <= 20,

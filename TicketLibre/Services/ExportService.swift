@@ -23,11 +23,12 @@ enum ExportService {
         return "\"" + safe.replacingOccurrences(of: "\"", with: "\"\"") + "\""
     }
     static func csv(_ receipts: [Receipt]) throws -> URL {
-        var rows = ["Fecha;Tienda;Ámbito;Categoría;Etiquetas;Número;Producto;Cantidad;Importe línea;Total ticket;Moneda"]
+        var rows = ["Fecha;Tienda;Ámbito;Categoría;Etiquetas;Número;Producto;Cantidad;Importe línea;Total ticket;Moneda;IVA ticket;Tratamiento IVA"]
         for r in receipts {
             let products = r.items.isEmpty ? [ReceiptItem(name: "(sin desglose)", cents: r.totalCents)] : r.items
             for item in products {
-                let fields = [r.date.formatted(.iso8601.year().month().day()), r.store, r.scope, item.category, r.tags.joined(separator: ", "), r.number, item.name, item.quantity, Money.edit(item.cents), Money.edit(r.totalCents), r.currency]
+                let treatment = r.vatCents == nil ? "" : (r.vatIncluded.map { $0 ? "Incluido" : "Añadido" } ?? "Pendiente de revisar")
+                let fields = [r.date.formatted(.iso8601.year().month().day()), r.store, r.scope, item.category, r.tags.joined(separator: ", "), r.number, item.name, item.quantity, Money.edit(item.cents), Money.edit(r.totalCents), r.currency, r.vatCents.map(Money.edit) ?? "", treatment]
                 rows.append(fields.map(csvField).joined(separator: ";"))
             }
         }
@@ -56,6 +57,10 @@ enum ExportService {
                 line("\(r.store) · \(r.date.formatted(date: .numeric, time: .omitted)) · \(r.scope) · \(r.category)", bold: true)
                 if !r.number.isEmpty { line("Ticket: \(r.number)") }
                 for item in r.items { line("\(item.quantity) × \(item.name) — \(Money.display(item.cents, currency: r.currency))") }
+                if let vat = r.vatCents {
+                    let treatment = r.vatIncluded.map { $0 ? "incluido en los precios" : "añadido a los productos" } ?? "tratamiento pendiente de revisar"
+                    line("IVA: \(Money.display(vat, currency: r.currency)) (\(treatment))")
+                }
                 line("TOTAL: \(Money.display(r.totalCents, currency: r.currency))", bold: true)
                 if r.difference != 0 { line("Ajuste respecto al desglose: \(Money.display(r.difference, currency: r.currency))") }
                 if !r.tags.isEmpty { line("Etiquetas: " + r.tags.joined(separator: ", ")) }

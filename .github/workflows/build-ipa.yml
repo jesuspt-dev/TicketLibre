@@ -50,10 +50,10 @@ jobs:
       - name: Save IPA for personal signing
         uses: actions/upload-artifact@v4
         with:
-          name: TicketLibre-v1.0.1-iPhone-xtool-unsigned
+          name: TicketLibre-v1.0.2-iPhone-xtool-unsigned
           path: |
-            build/TicketLibre-v1.0.1-iPhone-unsigned.ipa
-            build/TicketLibre-v1.0.1-iPhone-unsigned.ipa.sha256
+            build/TicketLibre-v1.0.2-iPhone-unsigned.ipa
+            build/TicketLibre-v1.0.2-iPhone-unsigned.ipa.sha256
           retention-days: 7
       - name: Save native test results
         if: always()
@@ -72,16 +72,16 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: TicketLibre-v1.0.1-iPhone-xtool-unsigned
+          name: TicketLibre-v1.0.2-iPhone-xtool-unsigned
           path: release
       - name: Publish verified unsigned IPA release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: v1.0.1
+          RELEASE_TAG: v1.0.2
         run: |
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" release/* --clobber
+            echo "Release $RELEASE_TAG already exists; keeping its verified assets unchanged."
             exit 0
           fi
-          gh release create "$RELEASE_TAG" release/* --target main --title "TicketLibre $RELEASE_TAG" --notes "Built with xtool. This IPA is unsigned and needs personal signing with AltStore. MIT licensed source. Not an App Store publication."
+          gh release create "$RELEASE_TAG" release/* --target "$GITHUB_SHA" --title "TicketLibre $RELEASE_TAG" --notes "Fixes VAT tables and totals: 18.11 + 3.56 = 21.67. Build 3, built and tested with xtool. Unsigned IPA: sign with your own Apple account using xtool. Update over the existing app to keep data. Free signatures expire after 7 days. MIT licensed; not an App Store/TestFlight release."

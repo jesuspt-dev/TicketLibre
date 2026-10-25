@@ -1,5 +1,14 @@
 # Historial
 
+## 1.0.2 — 25/10/2026 — build 3
+
+- Lee cuadros fiscales de varias bases/tipos de IVA y el total situado en una celda de tabla, no solo detrás de la palabra TOTAL.
+- Regresión del ticket comunicado: productos 18,11 €, IVA 3,34 € + 0,22 €, total 21,67 €.
+- Guarda el IVA separado, distingue precios netos e IVA incluido y no vuelve a añadir un impuesto que ya está en los precios. Los casos ambiguos requieren revisión.
+- El editor muestra el IVA, conserva los impuestos al recalcular y permite leer IVA y total del texto original de un ticket guardado.
+- Exportaciones, copias y reparto entre personas conservan el IVA. Las copias antiguas siguen siendo legibles sin cambiar sus importes.
+- Publica una versión nueva sin sobrescribir la IPA ni el checksum de 1.0.1.
+
 ## 1.0.1 — 24/10/2026 — build 2
 
 - Adaptación SwiftPM y configuración xtool, plist con valores literales e iconos PNG.
