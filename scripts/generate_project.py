@@ -42,7 +42,7 @@ test_sources=phase('testsources','PBXSourcesBuildPhase',[testbuild])
 test_frameworks=phase('testframeworks','PBXFrameworksBuildPhase',[])
 project_id=uid('project'); app_id=uid('app'); test_id=uid('test')
 project_config=config_list('project',dict(CLANG_ENABLE_MODULES='YES',CLANG_ENABLE_OBJC_ARC='YES',CLANG_WARN_DOCUMENTATION_COMMENTS='YES',GCC_C_LANGUAGE_STANDARD='gnu17',IPHONEOS_DEPLOYMENT_TARGET='18.0',SDKROOT='iphoneos',SWIFT_VERSION='5.0',SWIFT_STRICT_CONCURRENCY='minimal',ENABLE_USER_SCRIPT_SANDBOXING='YES',GCC_NO_COMMON_BLOCKS='YES'))
-app_config=config_list('app',dict(PRODUCT_NAME='$(TARGET_NAME)',PRODUCT_BUNDLE_IDENTIFIER='org.ticketlibre.ios',MARKETING_VERSION='1.0.1',CURRENT_PROJECT_VERSION='2',INFOPLIST_FILE='TicketLibre/Info.plist',GENERATE_INFOPLIST_FILE='NO',ASSETCATALOG_COMPILER_APPICON_NAME='AppIcon',ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME='AccentColor',CODE_SIGN_STYLE='Automatic',DEVELOPMENT_TEAM='',TARGETED_DEVICE_FAMILY='1',SUPPORTED_PLATFORMS='iphoneos iphonesimulator',SUPPORTS_MACCATALYST='NO',LD_RUNPATH_SEARCH_PATHS=['$(inherited)','@executable_path/Frameworks'],SWIFT_EMIT_LOC_STRINGS='YES'))
+app_config=config_list('app',dict(PRODUCT_NAME='$(TARGET_NAME)',PRODUCT_BUNDLE_IDENTIFIER='org.ticketlibre.ios',MARKETING_VERSION='1.0.2',CURRENT_PROJECT_VERSION='3',INFOPLIST_FILE='TicketLibre/Info.plist',GENERATE_INFOPLIST_FILE='NO',ASSETCATALOG_COMPILER_APPICON_NAME='AppIcon',ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME='AccentColor',CODE_SIGN_STYLE='Automatic',DEVELOPMENT_TEAM='',TARGETED_DEVICE_FAMILY='1',SUPPORTED_PLATFORMS='iphoneos iphonesimulator',SUPPORTS_MACCATALYST='NO',LD_RUNPATH_SEARCH_PATHS=['$(inherited)','@executable_path/Frameworks'],SWIFT_EMIT_LOC_STRINGS='YES'))
 test_config=config_list('test',dict(PRODUCT_NAME='$(TARGET_NAME)',PRODUCT_BUNDLE_IDENTIFIER='org.ticketlibre.ios.tests',GENERATE_INFOPLIST_FILE='YES',TARGETED_DEVICE_FAMILY='1',CODE_SIGN_STYLE='Automatic',TEST_HOST='$(BUILT_PRODUCTS_DIR)/TicketLibre.app/TicketLibre',BUNDLE_LOADER='$(TEST_HOST)',SUPPORTED_PLATFORMS='iphoneos iphonesimulator',LD_RUNPATH_SEARCH_PATHS=['$(inherited)','@executable_path/Frameworks','@loader_path/Frameworks']))
 proxy=add('proxy','PBXContainerItemProxy',containerPortal=project_id,proxyType=1,remoteGlobalIDString=app_id,remoteInfo='TicketLibre')
 dep=add('dep','PBXTargetDependency',target=app_id,targetProxy=proxy)
@@ -73,7 +73,7 @@ scheme=f'''<?xml version="1.0" encoding="UTF-8"?>
 plist={
  'CFBundleDevelopmentRegion':'es','CFBundleDisplayName':'TicketLibre','CFBundleExecutable':'$(EXECUTABLE_NAME)',
  'CFBundleIdentifier':'$(PRODUCT_BUNDLE_IDENTIFIER)','CFBundleInfoDictionaryVersion':'6.0','CFBundleName':'$(PRODUCT_NAME)',
- 'CFBundlePackageType':'APPL','CFBundleShortVersionString':'1.0.1','CFBundleVersion':'2',
+ 'CFBundlePackageType':'APPL','CFBundleShortVersionString':'1.0.2','CFBundleVersion':'3',
  'LSRequiresIPhoneOS':True,'UILaunchScreen':{},'UIApplicationSceneManifest':{'UIApplicationSupportsMultipleScenes':False},'UIApplicationSupportsIndirectInputEvents':True,
  'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],
  'NSCameraUsageDescription':'Escanear los tickets que decidas guardar. El reconocimiento se realiza en el dispositivo.',

@@ -12,7 +12,7 @@ rm -rf build/Package
 mkdir -p build/Package/Payload
 cp -R "$app_path" build/Package/Payload/
 # Remove previous output so zip cannot retain stale entries on a local rebuild.
-rm -f build/TicketLibre-v1.0.1-iPhone-unsigned.ipa
-(cd build/Package && /usr/bin/zip -qr ../TicketLibre-v1.0.1-iPhone-unsigned.ipa Payload)
-/usr/bin/unzip -t build/TicketLibre-v1.0.1-iPhone-unsigned.ipa
-(cd build && /usr/bin/shasum -a 256 TicketLibre-v1.0.1-iPhone-unsigned.ipa > TicketLibre-v1.0.1-iPhone-unsigned.ipa.sha256)
+rm -f build/TicketLibre-v1.0.2-iPhone-unsigned.ipa
+(cd build/Package && /usr/bin/zip -qr ../TicketLibre-v1.0.2-iPhone-unsigned.ipa Payload)
+/usr/bin/unzip -t build/TicketLibre-v1.0.2-iPhone-unsigned.ipa
+(cd build && /usr/bin/shasum -a 256 TicketLibre-v1.0.2-iPhone-unsigned.ipa > TicketLibre-v1.0.2-iPhone-unsigned.ipa.sha256)

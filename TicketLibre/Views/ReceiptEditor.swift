@@ -5,6 +5,8 @@ struct ReceiptEditor: View {
     @Environment(\.dismiss) private var dismiss
     @State private var receipt: Receipt
     @State private var total: String
+    @State private var vat: String
+    @State private var vatMessage: String?
     @State private var tags: String
     @State private var reviewed = false
     @State private var item: ReceiptItem?
@@ -15,11 +17,12 @@ struct ReceiptEditor: View {
     init(initial: Receipt, scanWarnings: [String] = []) {
         _receipt = State(initialValue: initial)
         _total = State(initialValue: Money.edit(initial.totalCents))
+        _vat = State(initialValue: initial.vatCents.map(Money.edit) ?? "")
         _tags = State(initialValue: initial.tags.joined(separator: ", "))
         _reviewed = State(initialValue: scanWarnings.isEmpty)
         warnings = scanWarnings
     }
-    private var valid: Bool { !receipt.store.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && Money.parse(total) != nil && reviewed }
+    private var valid: Bool { !receipt.store.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && Money.parse(total) != nil && (vat.isEmpty || Money.parse(vat) != nil) && reviewed }
     private var existing: Bool { store.archive.receipts.contains { $0.id == receipt.id } }
     var body: some View {
         Group {
@@ -55,13 +58,45 @@ struct ReceiptEditor: View {
                     }
                     Button { item = ReceiptItem() } label: { Label("Añadir producto o descuento", systemImage: "plus.circle") }
                 } header: { Text("Productos · \(receipt.items.count)") } footer: { Text("El importe de cada línea incluye su cantidad. Usa un importe negativo para descuentos.") }
+                Section {
+                    HStack { Text("IVA del ticket"); TextField("Opcional", text: $vat).keyboardType(.numbersAndPunctuation).multilineTextAlignment(.trailing) }
+                        .onChange(of: vat) { _, _ in
+                            let previous = receipt.calculatedTotal
+                            receipt.vatCents = Money.parse(vat)
+                            if Money.parse(total) == previous { total = Money.edit(receipt.calculatedTotal) }
+                        }
+                    if !vat.isEmpty {
+                        Toggle("Los precios ya incluyen IVA", isOn: Binding(get: { receipt.vatIncluded != false }, set: { included in
+                            let previous = receipt.calculatedTotal
+                            receipt.vatIncluded = included
+                            if Money.parse(total) == previous { total = Money.edit(receipt.calculatedTotal) }
+                        }))
+                        if receipt.vatIncluded == nil { Text("Comprueba si el IVA está incluido en los productos o debe añadirse.").font(.footnote).foregroundStyle(.orange) }
+                    }
+                    if !receipt.rawText.isEmpty {
+                        Button("Leer IVA y total del original") {
+                            let parsed = ReceiptParser.parse(receipt.rawText).receipt
+                            guard let amount = parsed.vatCents, let included = parsed.vatIncluded else {
+                                vatMessage = "No se ha podido confirmar el IVA del original. Puedes introducirlo y revisar el total manualmente."
+                                return
+                            }
+                            receipt.vatCents = amount
+                            receipt.vatIncluded = included
+                            vat = Money.edit(amount)
+                            total = Money.edit(parsed.totalCents)
+                            vatMessage = "IVA y total leídos del texto original. Revisa los importes antes de guardar."
+                        }
+                    }
+                    if let vatMessage { Text(vatMessage).font(.footnote).foregroundStyle(.secondary) }
+                } header: { Text("IVA") } footer: { Text("Cuando los productos son importes sin IVA, desactiva la opción para añadirlo una sola vez. Si ya lo incluyen, no se vuelve a sumar.") }
                 Section("Total") {
                     HStack { Text("Total del ticket"); TextField("0,00", text: $total).keyboardType(.numbersAndPunctuation).multilineTextAlignment(.trailing) }
                     LabeledContent("Suma de productos", value: Money.display(receipt.itemSum, currency: receipt.currency))
-                    if let parsed = Money.parse(total), parsed != receipt.itemSum {
-                        Label("Diferencia: \(Money.display(parsed - receipt.itemSum, currency: receipt.currency))", systemImage: "exclamationmark.triangle").foregroundStyle(.orange)
+                    if receipt.vatAddition != 0 { LabeledContent("IVA añadido", value: Money.display(receipt.vatAddition, currency: receipt.currency)) }
+                    if let parsed = Money.parse(total), parsed != receipt.calculatedTotal {
+                        Label("Diferencia: \(Money.display(parsed - receipt.calculatedTotal, currency: receipt.currency))", systemImage: "exclamationmark.triangle").foregroundStyle(.orange)
                     }
-                    Button("Usar suma de productos") { total = Money.edit(receipt.itemSum) }
+                    Button(receipt.vatAddition == 0 ? "Usar suma de productos" : "Usar suma de productos e IVA") { total = Money.edit(receipt.calculatedTotal) }
                 }
                 Section {
                     NavigationLink { SplitView(receipt: $receipt, total: Money.parse(total) ?? receipt.totalCents) } label: { Label("Dividir entre personas", systemImage: "person.2") }
@@ -104,6 +139,7 @@ struct ReceiptEditor: View {
     private func current() -> Receipt {
         var result = receipt
         result.totalCents = Money.parse(total) ?? receipt.totalCents
+        result.vatCents = Money.parse(vat)
         result.tags = Array(Set(tags.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty })).sorted()
         result.store = result.store.trimmingCharacters(in: .whitespacesAndNewlines)
         return result
@@ -197,7 +233,7 @@ struct SplitView: View {
                             if ids(for: item.id).isEmpty { Text("Sin selección: se reparte entre todas las personas.").font(.caption).foregroundStyle(.secondary) }
                         }.padding(.vertical, 4)
                     }
-                } header: { Text("Asignar productos") } footer: { Text("Los productos sin selección y la diferencia con el total se reparten entre todos. Los céntimos sobrantes se asignan por orden de participantes, también en los descuentos.") }
+                } header: { Text("Asignar productos") } footer: { Text("Los productos sin selección, el IVA añadido y los ajustes restantes se reparten entre todos. Los céntimos sobrantes se asignan por orden de participantes, también en los descuentos.") }
                 Section("Cada persona paga") {
                     ForEach(receipt.participants) { p in LabeledContent(p.name, value: Money.display(amounts[p.id] ?? 0, currency: receipt.currency)) }
                     LabeledContent("Total", value: Money.display(total, currency: receipt.currency)).font(.headline)

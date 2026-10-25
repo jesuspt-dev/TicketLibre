@@ -16,7 +16,7 @@ struct SettingsView: View {
             List {
                 Section {
                     Label("TicketLibre", systemImage: "receipt.fill").font(.title2.bold()).foregroundStyle(.teal)
-                    Text("Versión 1.0.1 · Gratis y de código abierto (MIT)").font(.subheadline)
+                    Text("Versión 1.0.2 · Gratis y de código abierto (MIT)").font(.subheadline)
                     Text("Sin anuncios, cuentas, créditos ni suscripciones. El escaneo no envía tus tickets a ningún servidor.").font(.footnote).foregroundStyle(.secondary)
                 }
                 Section("Tu app") {

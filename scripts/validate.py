@@ -4,7 +4,7 @@ from pathlib import Path
 import json, plistlib, struct, xml.etree.ElementTree as ET, re
 root=Path(__file__).resolve().parents[1]
 info=plistlib.loads((root/'TicketLibre/Info.plist').read_bytes())
-assert info['CFBundleShortVersionString']=='1.0.1' and info['CFBundleVersion']=='2'
+assert info['CFBundleShortVersionString']=='1.0.2' and info['CFBundleVersion']=='3'
 assert info['NSCameraUsageDescription'] and info['NSFaceIDUsageDescription']
 privacy=plistlib.loads((root/'TicketLibre/PrivacyInfo.xcprivacy').read_bytes())
 assert privacy['NSPrivacyTracking'] is False
@@ -12,7 +12,7 @@ project=(root/'TicketLibre.xcodeproj/project.pbxproj').read_text()
 for f in (root/'TicketLibre').rglob('*.swift'):
     assert f.relative_to(root/'TicketLibre').as_posix() in project, f'Missing target membership: {f}'
 assert 'AppIcon' in project and 'org.ticketlibre.ios' in project
-assert 'MARKETING_VERSION" = "1.0.1' in project and 'CURRENT_PROJECT_VERSION" = "2' in project
+assert 'MARKETING_VERSION" = "1.0.2' in project and 'CURRENT_PROJECT_VERSION" = "3' in project
 scheme=ET.parse(root/'TicketLibre.xcodeproj/xcshareddata/xcschemes/TicketLibre.xcscheme')
 assert scheme.find('.//TestableReference') is not None
 icon=root/'TicketLibre/Assets.xcassets/AppIcon.appiconset'
@@ -36,8 +36,8 @@ print(f"PASS: {len(list((root/'TicketLibre').rglob('*.swift')))} Swift target me
 print('This validates structure only. Xcode compilation and XCTest execution are separate required CI steps.')
 
 xtool=plistlib.loads((root/'xtool-resources/Info.plist').read_bytes())
-assert xtool['CFBundleExecutable']=='TicketLibre' and xtool['CFBundleVersion']=='2'
-assert xtool['CFBundleShortVersionString']=='1.0.1'
+assert xtool['CFBundleExecutable']=='TicketLibre' and xtool['CFBundleVersion']=='3'
+assert xtool['CFBundleShortVersionString']=='1.0.2'
 assert '$(' not in str(xtool),'xtool plist must not contain Xcode tokens'
 assert (root/'Package.swift').is_file() and (root/'xtool.yml').is_file()
 assert 'dev build --configuration release --ipa' in (root/'scripts/build-xtool.sh').read_text()
